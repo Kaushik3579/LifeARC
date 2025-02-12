@@ -273,4 +273,142 @@ button:hover {
   background-color: #cccccc;
   transform: none;
   box-shadow: none;
+}/* General Container /*/
+.review-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.section-title {
+  margin: 25px 0;
+  font-size: 1.75em;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.details-box {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  width: calc(50% - 12.5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.details-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.editable-input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.editable-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.edit-icon {
+  cursor: pointer;
+  color: #007bff;
+  margin-left: 10px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}
+
+.no-data {
+  color: #888;
+  font-style: italic;
+}
+
+.nested-object-container {
+  padding-left: 25px;
+  margin-top: 20px;
+}
+
+.nested-detail-item {
+  margin-bottom: 15px;
+}
+
+.nested-detail-item input {
+  padding: 8px;
+  margin-left: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.nested-detail-item input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.section-container {
+  margin-bottom: 40px;
+}
+
+/* Additional Styling for a Modern Look */
+.review-container {
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+}
+
+.details-box {
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+}
+
+.save-btn {
+  background: linear-gradient(145deg, #28a745, #218838);
+  border: none;
+}
+
+.edit-icon {
+  background: linear-gradient(145deg, #007bff, #0056b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

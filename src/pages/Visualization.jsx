@@ -15,7 +15,7 @@ const getCollectionName = (title) => {
   return map[title] || title;
 };
 
-function ReviewDetails() {
+function Visualization() {
   const [primaryNeeds, setPrimaryNeeds] = useState([]);
   const [secondaryExpenses, setSecondaryExpenses] = useState([]);
   const [secondaryInvestments, setSecondaryInvestments] = useState([]);
@@ -70,20 +70,22 @@ function ReviewDetails() {
   };
 
   return (
-    <div className={`review-container ${darkMode ? "dark" : ""}`}>
+    <div className={`visualization-container ${darkMode ? "dark" : ""}`}>
       <button onClick={toggleDarkMode} className="dark-mode-toggle">
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
-      <h2 className="title">Review Your Details</h2>
-
-      <DetailsSection title="Primary Needs" data={primaryNeeds} setData={setPrimaryNeeds} />
-      <DetailsSection title="Secondary Expenses" data={secondaryExpenses} setData={setSecondaryExpenses} />
-      <DetailsSection title="Secondary Investments" data={secondaryInvestments} setData={setSecondaryInvestments} />
-      <DetailsSection title="Investment Summary" data={investmentSummary} setData={setInvestmentSummary} />
+      <h2>Visualization</h2>
+      <div className="details-container">
+        <DetailsSection title="Primary Needs" data={primaryNeeds} setData={setPrimaryNeeds} />
+        <DetailsSection title="Secondary Expenses" data={secondaryExpenses} setData={setSecondaryExpenses} />
+        <DetailsSection title="Secondary Investments" data={secondaryInvestments} setData={setSecondaryInvestments} />
+        <DetailsSection title="Investment Summary" data={investmentSummary} setData={setInvestmentSummary} />
+      </div>
     </div>
   );
 }
 
+// Reusable component for structured display
 const DetailsSection = ({ title, data, setData }) => {
   const [editableField, setEditableField] = useState(null);
   const [modifiedData, setModifiedData] = useState({});
@@ -225,4 +227,4 @@ const NestedObjectDisplay = ({ parentId, collectionName: titleParam, parentField
   );
 };
 
-export default ReviewDetails;
+export default Visualization;
