@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import UserAvatar from "../components/UserAvatar";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function Dashboard() {
       <button onClick={toggleDarkMode} className="dark-mode-toggle">
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
+      <UserAvatar /> {/* New: displays user's photo */}
       <h2>Dashboard</h2>
       <p>Welcome to your dashboard!</p>
       <button onClick={handleReviewDetails}>Review Your Details</button>

@@ -57,3 +57,13 @@ body.dark-mode {
 .section button:hover, .details-box button:hover {
   background-color: #0056b3;
 }
+
+.dark-mode .dashboard,
+.dark-mode .visualization-container,
+.dark-mode .dashboard-sections,
+.dark-mode .section,
+.dark-mode .details-box {
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}

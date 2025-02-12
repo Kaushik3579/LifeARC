@@ -10,6 +10,8 @@ import SecondaryExpenses from "./pages/SecondaryExpenses";
 import Dashboard from "./pages/Dashboard"; // Import Dashboard component
 import ReviewDetails from "./pages/ReviewDetails"; // Import ReviewDetails component
 import PrimaryNeeds from "./pages/PrimaryNeeds"; // Import PrimaryNeeds component
+import Visualization from "./pages/Visualization"; // Import Visualization component
+import ExpenseTracker from "./pages/ExpenseTracker"; // new import
 
 function App() {
   console.log("Rendering App component"); // Add debug log
@@ -80,6 +82,24 @@ function App() {
               <>
                 <Navbar />
                 <PrimaryNeeds />
+              </>
+            }
+          />
+          <Route
+            path="/visualization"
+            element={
+              <>
+                <Navbar />
+                <Visualization />
+              </>
+            }
+          />
+          <Route
+            path="/expense-tracker"
+            element={
+              <>
+                <Navbar />
+                <ExpenseTracker />
               </>
             }
           />

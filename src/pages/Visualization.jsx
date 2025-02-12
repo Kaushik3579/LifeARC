@@ -3,6 +3,7 @@ import { db, auth } from "../firebase";
 import { collection, getDocs, query, where, doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { FaPen } from "react-icons/fa"; // Import Pen Icon
+import PieChartDisplay from "../components/PieChartDisplay"; // New import
 
 // Add mapping function
 const getCollectionName = (title) => {
@@ -69,17 +70,81 @@ function Visualization() {
     setDarkMode(!darkMode);
   };
 
+  // Updated helper to compute budget breakdown
+  const computeBudgetBreakdown = (record) => {
+    const income = record.income;
+    // If expenses object exists, use it; otherwise, assume expense fields are top-level.
+    const expenseData =
+      record.expenses && typeof record.expenses === "object"
+        ? record.expenses
+        : Object.fromEntries(
+            Object.entries(record).filter(
+              ([key]) =>
+                key !== "income" &&
+                key !== "userId" &&
+                key !== "timestamp" &&
+                key !== "id"
+            )
+          );
+    const totalExpenses = Object.values(expenseData).reduce(
+      (sum, value) => sum + Number(value),
+      0
+    );
+    const savings = income - totalExpenses;
+    const breakdown = { ...expenseData };
+    if (savings > 0) {
+      breakdown["Savings"] = savings;
+    }
+    return breakdown;
+  };
+
   return (
     <div className={`visualization-container ${darkMode ? "dark" : ""}`}>
       <button onClick={toggleDarkMode} className="dark-mode-toggle">
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
       <h2>Visualization</h2>
-      <div className="details-container">
-        <DetailsSection title="Primary Needs" data={primaryNeeds} setData={setPrimaryNeeds} />
-        <DetailsSection title="Secondary Expenses" data={secondaryExpenses} setData={setSecondaryExpenses} />
-        <DetailsSection title="Secondary Investments" data={secondaryInvestments} setData={setSecondaryInvestments} />
-        <DetailsSection title="Investment Summary" data={investmentSummary} setData={setInvestmentSummary} />
+      {/* Removed the text list display */}
+      {/* New: Render only pie charts */}
+      <div className="pie-charts-section">
+        {primaryNeeds.length > 0 && (
+          <div className="pie-chart-container">
+            <h3>Budget Breakdown Pie Chart</h3>
+            <PieChartDisplay
+              fieldsData={computeBudgetBreakdown(primaryNeeds[0])}
+            />
+          </div>
+        )}
+        {secondaryExpenses.length > 0 && (
+          <div className="pie-chart-container">
+            <h3>Secondary Expenses Pie Chart</h3>
+            <PieChartDisplay
+              fieldsData={Object.fromEntries(
+                Object.entries(secondaryExpenses[0]).filter(([key, value]) => typeof value === "number")
+              )}
+            />
+          </div>
+        )}
+        {secondaryInvestments.length > 0 && (
+          <div className="pie-chart-container">
+            <h3>Secondary Investments Pie Chart</h3>
+            <PieChartDisplay
+              fieldsData={Object.fromEntries(
+                Object.entries(secondaryInvestments[0]).filter(([key, value]) => typeof value === "number")
+              )}
+            />
+          </div>
+        )}
+        {investmentSummary.length > 0 && (
+          <div className="pie-chart-container">
+            <h3>Investment Summary Pie Chart</h3>
+            <PieChartDisplay
+              fieldsData={Object.fromEntries(
+                Object.entries(investmentSummary[0]).filter(([key, value]) => typeof value === "number")
+              )}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
