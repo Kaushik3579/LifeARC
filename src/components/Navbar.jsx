@@ -12,8 +12,8 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h2>Financial Planner</h2>
-      <button onClick={handleLogout}>Logout</button>
+      <h2 className="navbar-title">Financial Planner</h2>
+      <button className="logout-btn" onClick={handleLogout}>Logout</button>
     </nav>
   );
 }

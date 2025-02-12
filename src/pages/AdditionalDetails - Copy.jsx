@@ -23,3 +23,4 @@ function AdditionalDetails() {
 }
 
 export default AdditionalDetails;
+ 

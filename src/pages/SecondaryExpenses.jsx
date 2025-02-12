@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { db, auth } from "../firebase"; // Import Firebase database and auth
+import { collection, addDoc } from "firebase/firestore"; // Import Firestore methods
 
 function SecondaryExpenses() {
   const [expenses, setExpenses] = useState({
@@ -19,6 +19,7 @@ function SecondaryExpenses() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const user = auth.currentUser; // Get the current user
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ function SecondaryExpenses() {
     try {
       console.log('Saving data to Firebase...');
       const docRef = await addDoc(collection(db, "secondaryExpenses"), {
+        userId: user.uid, // Save the user ID
         expenses,
         investmentDetails,
         timestamp: new Date()

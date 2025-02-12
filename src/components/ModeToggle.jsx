@@ -5,6 +5,7 @@ function ModeToggle() {
 
   useEffect(() => {
     document.body.className = darkMode ? 'dark-mode' : 'light-mode';
+    document.body.style.backgroundColor = darkMode ? '#121212' : '#ffffff'; // Change background color
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 

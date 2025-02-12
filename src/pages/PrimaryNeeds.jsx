@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Home } from "lucide-react";
-import { db } from "../firebase"; // Import Firebase database
+import { db, auth } from "../firebase"; // Import Firebase database and auth
 import { collection, addDoc } from "firebase/firestore"; // Import Firestore methods
 
 function PrimaryNeeds() {
@@ -20,6 +20,7 @@ function PrimaryNeeds() {
   });
 
   const navigate = useNavigate();
+  const user = auth.currentUser; // Get the current user
 
   const handleChange = (field, value) => {
     setExpenses(prev => ({
@@ -35,6 +36,7 @@ function PrimaryNeeds() {
     if (income && Object.values(expenses).every((value) => value)) {
       try {
         await addDoc(collection(db, "primaryNeeds"), {
+          userId: user.uid, // Save the user ID
           income,
           expenses,
           timestamp: new Date(),
