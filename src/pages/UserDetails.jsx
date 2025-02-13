@@ -24,7 +24,7 @@ function UserDetails() {
   }
 
   return (
-    <div className="container">
+    <div className="user-details-container" style={{ padding: "20px", height: "100vh" }}>
       <h2>User Details</h2>
       <table className="user-details-table">
         <tbody>

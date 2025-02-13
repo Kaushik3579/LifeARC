@@ -11,6 +11,7 @@ import PrimaryNeeds from "./pages/PrimaryNeeds"; // Import PrimaryNeeds componen
 import Visualization from "./pages/Visualization"; // Import Visualization component
 import ExpenseTracker from "./pages/ExpenseTracker"; // new import
 import UserDetails from "./pages/UserDetails"; // Import UserDetails component
+import CombinedDetails from "./pages/CombinedDetails"; // Import CombinedDetails component
 
 function App() {
   console.log("Rendering App component"); // Add debug log
@@ -30,6 +31,7 @@ function App() {
           <Route path="/visualization" element={<Visualization />} />
           <Route path="/expense-tracker" element={<ExpenseTracker />} />
           <Route path="/user-details" element={<UserDetails />} /> {/* New route */}
+          <Route path="/combined-details" element={<CombinedDetails />} /> {/* New route */}
         </Routes>
       </div>
     </Router>

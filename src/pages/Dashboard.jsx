@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../firebase"; // Import signOut
 import UserAvatar from "../components/UserAvatar";
@@ -6,16 +6,6 @@ import Visualization from "./Visualization"; // Import Visualization component
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
-
-  useEffect(() => {
-    document.body.className = darkMode ? 'dark-mode' : 'light-mode';
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
-
-  const handleReviewDetails = () => {
-    navigate("/review-details");
-  };
 
   const handleLogout = async () => {
     try {
@@ -27,13 +17,12 @@ function Dashboard() {
   };
 
   return (
-    <div className={`dashboard ${darkMode ? "dark" : ""}`} style={{ display: "flex", height: "100vh", gap: "20px", flexDirection: "column" }}>
+    <div className="dashboard" style={{ display: "flex", height: "100vh", gap: "20px", flexDirection: "column" }}>
+      <UserAvatar /> {/* New: displays user's photo at the top right corner */}
       <div style={{ flex: 1, padding: "20px", display: "flex" }}>
         <div style={{ flex: 1 }}>
-          <UserAvatar /> {/* New: displays user's photo */}
           <h2>Dashboard</h2>
           <p>Welcome to your dashboard!</p>
-          <button onClick={handleReviewDetails}>Review Your Details</button>
           
           <div className="dashboard-sections">
             <div className="section">
