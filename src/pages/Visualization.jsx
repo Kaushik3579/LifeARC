@@ -100,16 +100,12 @@ function Visualization() {
 
   return (
     <div className={`visualization-container ${darkMode ? "dark" : ""}`}>
-      <button onClick={toggleDarkMode} className="dark-mode-toggle">
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
-      <h2>Visualization</h2>
-      {/* Removed the text list display */}
+      {/* Removed the visualization title */}
       {/* New: Render only pie charts */}
       <div className="pie-charts-section">
         {primaryNeeds.length > 0 && (
           <div className="pie-chart-container">
-            <h3>Budget Breakdown Pie Chart</h3>
+            <h3>Budget Breakdown</h3> {/* Changed title */}
             <PieChartDisplay
               fieldsData={computeBudgetBreakdown(primaryNeeds[0])}
             />
@@ -117,7 +113,6 @@ function Visualization() {
         )}
         {secondaryExpenses.length > 0 && (
           <div className="pie-chart-container">
-            <h3>Secondary Expenses Pie Chart</h3>
             <PieChartDisplay
               fieldsData={Object.fromEntries(
                 Object.entries(secondaryExpenses[0]).filter(([key, value]) => typeof value === "number")

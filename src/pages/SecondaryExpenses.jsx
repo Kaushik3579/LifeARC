@@ -106,39 +106,43 @@ function SecondaryExpenses() {
               </label>
             </div>
 
-            <div className="range-input">
-              <label>Select years for projection (1-10):</label>
-              <input
-                type="range"
-                min="1"
-                max="10"
-                value={investmentDetails.years}
-                onChange={(e) => 
-                  setInvestmentDetails(prev => ({
-                    ...prev,
-                    years: Number(e.target.value)
-                  }))
-                }
-              />
-              <span>{investmentDetails.years}</span>
-            </div>
+            {investmentDetails.hasInvestments && (
+              <>
+                <div className="range-input">
+                  <label>Select years for projection (1-10):</label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="10"
+                    value={investmentDetails.years}
+                    onChange={(e) => 
+                      setInvestmentDetails(prev => ({
+                        ...prev,
+                        years: Number(e.target.value)
+                      }))
+                    }
+                  />
+                  <span>{investmentDetails.years}</span>
+                </div>
 
-            <div className="select-group">
-              <label>Select your location:</label>
-              <select
-                value={investmentDetails.location}
-                onChange={(e) => 
-                  setInvestmentDetails(prev => ({
-                    ...prev,
-                    location: e.target.value
-                  }))
-                }
-              >
-                <option value="Mumbai">Mumbai</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Bangalore">Bangalore</option>
-              </select>
-            </div>
+                <div className="select-group">
+                  <label>Select your location:</label>
+                  <select
+                    value={investmentDetails.location}
+                    onChange={(e) => 
+                      setInvestmentDetails(prev => ({
+                        ...prev,
+                        location: e.target.value
+                      }))
+                    }
+                  >
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                  </select>
+                </div>
+              </>
+            )}
           </div>
 
           <button 

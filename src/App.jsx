@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ModeToggle from "./components/ModeToggle";
 import IncomeExpenses from "./pages/IncomeExpenses";
 import SecondaryInvestments from "./pages/SecondaryInvestments";
 import InvestmentSummary from "./pages/InvestmentSummary";
@@ -19,7 +18,6 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <ModeToggle />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
